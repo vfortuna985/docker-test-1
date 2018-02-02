@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+    nginx:
+        build: nginx/
+        volumes_from:
+            - code
+        ports:
+            - 8080:80
+    code:
+        build: code/
+        volumes:
+            - /var/www/html
+#            - ./html:/var/www/html
+
