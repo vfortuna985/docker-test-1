@@ -7,9 +7,28 @@ services:
             - code
         ports:
             - 8080:80
+
     code:
         build: code/
         volumes:
-            - /var/www/html
-#            - ./html:/var/www/html
+            - /var/www/html/
+#            - ./html/:/var/www/html/
 
+# Use root/example as user/password credentials
+    db:
+        image: mariadb
+        volumes:
+            - ./data/:/var/lib/mysql/
+        restart: always
+        environment:
+            MYSQL_ROOT_PASSWORD: example
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        volumes:
+            - /sessions/
+        environment:
+            PMA_HOST: db
+        restart: always
+        ports:
+            - 8081:80
