@@ -12,7 +12,7 @@ services:
         build: code/
         volumes:
             - /var/www/html/
-#            - ./html/:/var/www/html/
+#            - ./code/html/:/var/www/html/
 
 # Use root/example as user/password credentials
     db:
